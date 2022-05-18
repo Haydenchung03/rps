@@ -14,9 +14,25 @@
             let option1 = option[Math.floor(Math.random() * option.length)]
             return option1;
         }
-        const playerSelection = promp("Enter in rock, paper or scissors")
-        const computer = computerPlay()
 
+        function playRound(player, computer) {
+            if(player === computer) {
+                return "Draw";
+            } else if(player === 'ROCK' && computer === 'PAPER') {
+                return "You Lose! Paper beats Rock";
+            } else if(player === 'ROCK' && computer === 'SCISSORS') {
+                return "You Win! Rock beats Scissors";
+            } else if(player === 'PAPER' && computer === 'SCISSORS') {
+                return "You Lose! Scissors beats Paper";
+            } else if(player === 'PAPER' && computer === 'ROCK') {
+                return "You Win! Paper beats Rock";
+            }
+        }
+        
+        const playerSelection1 = prompt("Enter in rock, paper or scissors");
+        playerSelection = playerSelection1.toUpperCase();
+        const computer = computerPlay();
+        console.log(playRound(playerSelection, computer));
     </script>
 </body>
 </html>
