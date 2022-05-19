@@ -26,13 +26,40 @@
                 return "You Lose! Scissors beats Paper";
             } else if(player === 'PAPER' && computer === 'ROCK') {
                 return "You Win! Paper beats Rock";
+            } else if(player === 'SCISSORS' && computer === 'ROCK') {
+                return "You Lose! Rock beats Scissors";
+            } else if(player === 'SCISSORS' && computer === 'PAPER') {
+                return "You Win! Scissors beats Paper";
             }
         }
+        function game() {
+            let player1 = 0;
+            let computer1 = 0;
+            for(let i = 0; i < 5; i++) {
+                const playerSelection1 = prompt("Enter in rock, paper or scissors");
+                playerSelection = playerSelection1.toUpperCase();
+                const computer = computerPlay();
+                console.log(playRound(playerSelection, computer));
+                if(playRound(playerSelection, computer) === "You Win! Paper beats Rock"
+                || playRound(playerSelection, computer) === "You Win! Rock beats Scissors"
+                || playRound(playerSelection, computer) === "You Win! Scissors beats Paper") {
+                    player1 += 1;
+                } else if(playRound(playerSelection, computer) === "You Lose! Paper beats Rock"
+                || playRound(playerSelection, computer) === "You Lose! Rock beats Scissors"
+                || playRound(playerSelection, computer) === "You Lose! Rock beats Scissors") {
+                    computer1 += 1;
+                }
+            }
+            if(player1 > computer1) {
+                console.log("You win!")
+            } else if(computer1 > player1) {
+                console.log("You Lose!")
+            } else {
+                console.log("You draw!")
+            }
+        }
+        game();
         
-        const playerSelection1 = prompt("Enter in rock, paper or scissors");
-        playerSelection = playerSelection1.toUpperCase();
-        const computer = computerPlay();
-        console.log(playRound(playerSelection, computer));
     </script>
 </body>
 </html>
